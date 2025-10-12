@@ -1,3 +1,51 @@
-#heading {
-    color: blue;
+.header {
+    display: flex;
+    justify-content:space-between;
+    border: 1px solid rgb(168, 162, 162);
+    height: 110px;
+}
+.logo {
+    height: 100px;
+    width:100px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.nav-items{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.nav-items > ul{
+    font-size: 20px;
+    display: flex;
+    list-style-type: none;
+}
+.nav-items > ul >li { 
+   margin: 10px;
+   padding: 10px;
+}
+.res-cart {
+   background-color: lightgray;
+    Width:200px;
+    padding: 5px;
+    margin: 5px;
+}
+.image-self {
+    Width:195px;
+    height:170px;
+    object-fit: cover;
+}
+.res-cart:hover {
+    border: 1px solid black;
+    cursor: pointer;
+}
+.search {
+    padding: 10px;
+}
+.res-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+.res-data {
+    line-height: 1;
 }
