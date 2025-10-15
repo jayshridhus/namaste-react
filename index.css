@@ -14,6 +14,7 @@
 .nav-items{
     padding-top: 10px;
     padding-bottom: 10px;
+    margin-left: auto;
 }
 .nav-items > ul{
     font-size: 20px;
@@ -48,4 +49,36 @@
 }
 .res-data {
     line-height: 1;
+}
+.filter
+{
+    display: flex;
+}
+.filter-btn
+{
+    margin: 10px;
+}
+
+.shimmer-container
+{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 40px 5px;
+}
+.shimmer-card
+{
+    width: 210px;
+    height: 330px;
+    margin: 5px;
+    background-color: #f0f0f0;
+}
+.btn-Login
+{
+    justify-self: right;
+    padding: 0px 5px;
+    margin: 40px;
+}
+.search-box
+{
+    margin: 5px;
 }
