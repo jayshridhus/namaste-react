@@ -5,31 +5,31 @@ class UserClass extends React.Component{
         super(props);
 
         this.state={
-            count:0,
+            userInfo:{
+                login:"default",
+                url:"default",
+                avatar_url:"http://dummy-photo.com"
+            }
         };
-        console.log(this.props.name +"Child constructor called....");
     }
   
-    componentDidMount(){
-        console.log(this.props.name +"Child did mount called");
+     async componentDidMount(){
+       const data=await fetch("https://api.github.com/users/jayshridhus");
+       const json=await data.json();
+       this.setState({
+           userInfo:json,
+       });
+
     }
 
     render() {
-        const {name,location,contact}=this.props;
-        const {count}=this.state;
-        console.log(this.props.name +"Child render is called...");
+        const {login,url,avatar_url}=this.state.userInfo;
         return(
         <div className="user-card"> 
-           <h1>Count:{count}</h1>
-           <button onClick={()=>{
-             this.setState({
-                count:this.state.count+1
-             });
-           }}
-           >Count Increase</button>
-           <h2>Name:{name}</h2>
-           <h3>Location:{location}</h3>
-           <h4>contact:{contact}</h4>
+           <img src={avatar_url}></img>
+           <h2>Name:{login}</h2>
+           <h3>Git Url:{url}</h3>
+
         </div>
     );
  }

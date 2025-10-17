@@ -20,7 +20,7 @@ class About extends React.Component {
         <h2>This is Namaste React Web series</h2>
         {/* <User name={"Jayshri Dhus(functional component)"} location={"pune"} contact={"jayshri.dhus"}/> */}
         <UserClass name={"Jayshri Dhus(class component)"} location={"pune"} contact={"jayshri.dhus"}/>
-        <UserClass name={"Sharvil Rahane(class component)"} location={"pune"} contact={"sharvil.rahane"}/>
+        <UserClass name={"Sharvil Rahane(class component)"} location={"pune"} contact={"sharvil.dhus"}/>
     </div>
    );
  }}
