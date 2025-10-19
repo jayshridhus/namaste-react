@@ -13,10 +13,10 @@ const RestaruntCart =(props) =>{
     }=resData?.info
 
     return (
-          <div className="res-cart">
-               <img className="image-self" src={CDN_URL + cloudinaryImageId}></img>
+          <div className="m-4 p-4 w-48 bg-gray-200 rounded-lg hover:bg-gray-300">
+               <img className="rounded-lg h-43 w-47" src={CDN_URL + cloudinaryImageId}></img>
                <div className="res-data">
-                 <b>{name}</b>
+                 <b className="font-bold py-4">{name}</b>
                 <p>{cuisines.join(", ")} </p>
                 <p>{avgRating} *</p>
                 <p>{sla?.deliveryTime} Mins</p> 
