@@ -1,13 +1,17 @@
-import RestaruntCart from "./RestaruntCart";
-import { use, useEffect, useState } from "react";
+import RestaruntCart, { withPromotedLabel } from "./RestaruntCart";
+import { use, useEffect, useState,useContext } from "react";
 import Shimmer from "./shimmer";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
 
   const [lstRes,setlstRes]=useState([]);
   const [searchText,setsearchText]=useState("");
   const [filteredRest,setFilteredRest]=useState([]);
-  
+
+  const RestaruantCardPromoted= withPromotedLabel(RestaruntCart);
+  const {LoggedInUser,setUserName} = useContext(UserContext);
+
   useEffect(()=>{
   fetchData();
   },[]);
@@ -29,6 +33,8 @@ const Body = () => {
   //   return <Shimmer/>;
   // }
 
+
+
     return lstRes.length===0 ? (<Shimmer/>) : (
      <div className="body">
         <div className="filter">
@@ -48,7 +54,7 @@ const Body = () => {
             }
             }
             >Search</button>
-         
+
           <button className="px-4 py-2 m-4 bg-green-100 rounded-lg" 
           onClick={()=>{
            const  filteredlst=lstRes.filter((res)=>res.info.avgRating>4 );
@@ -56,13 +62,23 @@ const Body = () => {
           }}>
           Top Rated Restaruant
           </button>
+          <label>User Name:</label>
+          <input className="border border-black p-2"
+           value={LoggedInUser}
+           onChange={(e)=>setUserName(e.target.value)}
+           ></input>
+
         </div>
          </div>
         <div className="flex flex-wrap"> 
          {
             filteredRest.map((restaurants) =>(
-              <RestaruntCart key={restaurants.info.id} resData={restaurants}/>
-            )) }
+              // <RestaruntCart key={restaurants.info.id} resData={restaurants}/>
+               restaurants.info.isOpen ? 
+                <RestaruantCardPromoted key={restaurants.info.id} resData={restaurants}/>
+                :<RestaruntCart key={restaurants.info.id} resData={restaurants}/>
+              )
+              ) }
         </div>
      </div>
     );
