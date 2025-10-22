@@ -9,6 +9,9 @@ import RestarauntMenu from "./components/RestarauntMenu";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import { Suspense } from "react";
 import UserContext from "./utils/UserContext";
+import { Provider } from "react-redux";
+import AppStore from "./utils/AppStore";
+import Carts from "./components/Carts";
 // import Grocery from "./components/Grocery";
 
 const AppLayout= ()=>{
@@ -22,12 +25,14 @@ const AppLayout= ()=>{
   }, []);
 
     return (
-      <UserContext.Provider value={{LoggedInUser: userName }}>
+    <Provider store={AppStore}>      
+      <UserContext.Provider value={{LoggedInUser: userName,setUserName }}>
         <div className="app">
             <Header/>
             <Outlet/>
         </div>
-        </UserContext.Provider>
+      </UserContext.Provider>
+    </Provider>
     );
 };
 
@@ -57,7 +62,11 @@ const appRouter=createBrowserRouter([
            {
              path:"/restaraunt/:resId",
              element:<RestarauntMenu />
-           }
+           },
+           {
+             path:"/carts",
+             element:<Carts />
+           },
     ],
     errorElement:<Error/>
 },
